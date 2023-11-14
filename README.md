@@ -66,8 +66,7 @@ new_restaurant = {
 - **Removal of Dover Establishments:** Pruning the dataset involved the removal of all establishments within the `Dover Local Authority` to align with the magazine's preferences using the `delete_many()` method
 
 - **Data Transformation:** Numeric values stored as strings, specifically `latitude`,`longitude`, and `RatingValue`, underwent conversion to appropriate numeric types.
-       - Converting the latitude and longitude to decimal numbers:
-
+- Converting the latitude and longitude to decimal numbers:
 ```python
 lat_long_update_query = {
     '$set': {
@@ -79,8 +78,8 @@ lat_long_update_query = {
         }
     }
 }
-
-     - Converting the RatingValue to integer numbers:
+```
+- Converting the RatingValue to integer numbers:
 
 ```python
 RatingValue_update_query = {
@@ -90,7 +89,7 @@ RatingValue_update_query = {
         }
     }
 }
-
+```
 
 
 
