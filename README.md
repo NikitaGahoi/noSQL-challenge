@@ -6,6 +6,15 @@ MongoDB, a robust NoSQL database system, was leveraged for a comprehensive analy
 
 MongoDB, renowned for its document-oriented model and BSON storage format, provides agility in handling diverse datasets. In this project, MongoDB was chosen due to its flexibility and efficiency, particularly in managing JSON-like data structures. The dataset under consideration includes information about food establishments, such as hygiene scores, geographical details, and ratings. The project's focal point was the implementation of MongoDB for data storage and retrieval, aided by Python and Jupyter Notebooks for seamless interaction.
 
+This project is broken up into two Jupyter Notebook:
+
+  **NoSQL_setup_starter:** This notebook covers the first two sections of this repository, the database and jupyter notebook set up, as well as the steps that were taken to update the database before performing an exploratory analysis on the establishments.
+  **NoSQL_analysis_starter:** This notebook contains the code to answer the following questions:
+        - Which establishments have a hygiene score equal to 20?
+        - Which establishments in London have a RatingValue greater than or equal to 4?
+        - What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?
+        - How many establishments in each Local Authority area have a hygiene score of 0? Sort the results from highest to lowest, and print out the top ten local authority areas.
+
 ## Project Structure
 
 The project was organized into three main phases, with each phase addressing specific aspects of the dataset:
