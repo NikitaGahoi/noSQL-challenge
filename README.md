@@ -30,8 +30,68 @@ The project was organized into three main phases, with each phase addressing spe
 **2. Update the Database**
 
 - **Addition of New Restaurant:** The project involved the addition of a new halal restaurant, `"Penang Flavours"` to the database, complete with detailed information.
-- **BusinessTypeID Update:** To ensure data consistency, the `BusinessTypeID` for "Restaurant/Cafe/Canteen" was determined and applied to update the new restaurant's data.
-- **Removal of Dover Establishments:** Pruning the dataset involved the removal of all establishments within the `Dover Local Authority` to align with the magazine's preferences.
+
+  ```python
+new_restaurant = {
+    "BusinessName":"Penang Flavours",
+    "BusinessType":"Restaurant/Cafe/Canteen",
+    "BusinessTypeID":"",
+    "AddressLine1":"Penang Flavours",
+    "AddressLine2":"146A Plumstead Rd",
+    "AddressLine3":"London",
+    "AddressLine4":"",
+    "PostCode":"SE18 7DY",
+    "Phone":"",
+    "LocalAuthorityCode":"511",
+    "LocalAuthorityName":"Greenwich",
+    "LocalAuthorityWebSite":"http://www.royalgreenwich.gov.uk",
+    "LocalAuthorityEmailAddress":"health@royalgreenwich.gov.uk",
+    "scores":{
+        "Hygiene":"",
+        "Structural":"",
+        "ConfidenceInManagement":""
+    },
+    "SchemeType":"FHRS",
+    "geocode":{
+        "longitude":"0.08384000",
+        "latitude":"51.49014200"
+    },
+    "RightToReply":"",
+    "Distance":4623.9723280747176,
+    "NewRatingPending":True
+}
+```
+
+- **BusinessTypeID Update:** To ensure data consistency, the `BusinessTypeID` for "Restaurant/Cafe/Canteen" was determined and applied to update the new restaurant's data. To update the new restaurant data, the following command is used: `establishments.update_one(new_restaurant, [{'$set' : {'BusinessTypeID' : 1}}])`.
+
+- **Removal of Dover Establishments:** Pruning the dataset involved the removal of all establishments within the `Dover Local Authority` to align with the magazine's preferences using the `delete_many()` method
+
 - **Data Transformation:** Numeric values stored as strings, specifically `latitude`,`longitude`, and `RatingValue`, underwent conversion to appropriate numeric types.
+       - Converting the latitude and longitude to decimal numbers:
+
+```python
+lat_long_update_query = {
+    '$set': {
+        'geocode.latitude': {
+            '$toDouble': '$geocode.latitude'
+        },
+        'geocode.longitude': {
+            '$toDouble': '$geocode.longitude'
+        }
+    }
+}
+
+     - Converting the RatingValue to integer numbers:
+
+```python
+RatingValue_update_query = {
+    '$set': {
+        'RatingValue': {
+            '$toInt': '$RatingValue'
+        }
+    }
+}
+
+
 
 
