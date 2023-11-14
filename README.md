@@ -27,4 +27,11 @@ The project was organized into three main phases, with each phase addressing spe
 -  **Pretty Print for Readability:** The `Pretty Print` library was incorporated to enhance the readability of data during both the setup and analysis phases.
 -  **Database Verification:** Validation commands, such as `mongo.list_database_names()`, were executed to confirm the successful import of the database.
 
+**2. Update the Database**
+
+- **Addition of New Restaurant:** The project involved the addition of a new halal restaurant, `"Penang Flavours"` to the database, complete with detailed information.
+- **BusinessTypeID Update:** To ensure data consistency, the `BusinessTypeID` for "Restaurant/Cafe/Canteen" was determined and applied to update the new restaurant's data.
+- **Removal of Dover Establishments:** Pruning the dataset involved the removal of all establishments within the `Dover Local Authority` to align with the magazine's preferences.
+- **Data Transformation:** Numeric values stored as strings, specifically `latitude`,`longitude`, and `RatingValue`, underwent conversion to appropriate numeric types.
+
 
