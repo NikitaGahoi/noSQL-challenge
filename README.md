@@ -111,10 +111,6 @@ query = {'scores.Hygiene' : {'$eq': 20}}
 # Use count_documents to display the number of documents in the result
 hygiene_score = establishments.count_documents(query)
 print("The number of establishments with hygiene score of 20 are", hygiene_score, "\n")
-
-# Display the first document in the results using pprint
-pprint("The first document of result is: ")
-pprint(establishments.find_one(query))
 ```
 
 2. Which establishments in London have a RatingValue greater than or equal to 4?
@@ -126,15 +122,14 @@ RatingValue_query = {'LocalAuthorityName': {'$regex': 'London'},
 # Use count_documents to display the number of documents in the result
 RatingValue_London_results = establishments.count_documents(RatingValue_query)
 print("The number of establishments in London with rating greater than or equal to 4 are", RatingValue_London_results, "\n")
-
-
-# Display the first document in the results using pprint
-pprint("The first document of result is: ")
-pprint(establishments.find_one(RatingValue_query))
 ```
 
 3. What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?
 ```python
+# Search within 0.01 degree on either side of the latitude and longitude.
+# Rating value must equal 5
+# Sort by hygiene score
+
 degree_search = 0.01
 latitude =  establishments.find_one({'BusinessName': 'Penang Flavours'})['geocode']['latitude']
 longitude = establishments.find_one({'BusinessName': 'Penang Flavours'})['geocode']['longitude'] 
@@ -173,16 +168,20 @@ sort = {'$sort': {'count': -1}}
 
 pipeline = [match, group, sort]
 
-# Print the number of documents in the result
-result = list(establishments.aggregate(pipeline))
-print('The number of documents in the result is', len(result))
-
-# Print the first 10 results
-pprint(result[0:10])
 ```
 
-**Query Execution:** MongoDB queries were crafted and executed to address specific questions posed by the food magazine company, covering hygiene scores, London establishments with high ratings, top-rated establishments near "Penang Flavours," and establishments with a hygiene score of 0 in each Local Authority.
-Results and Insights: The analysis provided actionable insights for the magazine, aiding in the selection of locations for articles. These insights ranged from identifying top-rated establishments to regions with hygiene concerns.
+## Conclusion
+
+The MongoDB project for "Eat, Safe, Love" showcased the database's adaptability to handle real-world scenarios. The utilization of Python and Jupyter Notebooks facilitated a seamless workflow, integrating data setup, updates, and exploratory analysis. MongoDB's document-oriented structure proved advantageous in managing diverse data, allowing for flexibility in schema design. This project underscores the significance of NoSQL databases in data-driven decision-making processes and highlights MongoDB's pivotal role in handling complex datasets for actionable insights. The detailed exploration provided valuable information, empowering the food magazine company to make informed choices for their upcoming articles.
+
+
+## References
+
+UK Food Standards AgencyLinks to an external site. (2022). UK food hygiene rating data API. https://ratings.food.gov.uk/open-data/en-GBLinks to an external site.. Contains public sector information licensed under the Open Government Licence v3.0Links to an external site.
+Accessed Sept 9, 2022 and Sept 12, 2022 with the establishment settings as follows: longitude=51.5072, latitude=-0.1276, maxdistancelimit=4567, pagesize=10000, sortoptionkey=distance, pagenumber=(1,2,3,4,5,6,7,8).
+
+
+
 
 
 
