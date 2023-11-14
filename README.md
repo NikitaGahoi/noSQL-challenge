@@ -31,7 +31,7 @@ The project was organized into three main phases, with each phase addressing spe
 
 - **Addition of New Restaurant:** The project involved the addition of a new halal restaurant, `"Penang Flavours"` to the database, complete with detailed information.
 
-  ```python
+```python
 new_restaurant = {
     "BusinessName":"Penang Flavours",
     "BusinessType":"Restaurant/Cafe/Canteen",
@@ -61,8 +61,7 @@ new_restaurant = {
     "NewRatingPending":True
 }
 ```
-
-- **BusinessTypeID Update:** To ensure data consistency, the `BusinessTypeID` for "Restaurant/Cafe/Canteen" was determined and applied to update the new restaurant's data. To update the new restaurant data, the following command is used: `establishments.update_one(new_restaurant, [{'$set' : {'BusinessTypeID' : 1}}])`.
+ - **BusinessTypeID Update:** To ensure data consistency, the `BusinessTypeID` for "Restaurant/Cafe/Canteen" was determined and applied to update the new restaurant's data. To update the new restaurant data, the following command is used: `establishments.update_one(new_restaurant, [{'$set' : {'BusinessTypeID' : 1}}])`.
 
 - **Removal of Dover Establishments:** Pruning the dataset involved the removal of all establishments within the `Dover Local Authority` to align with the magazine's preferences using the `delete_many()` method
 
